@@ -461,6 +461,7 @@ namespace kursovik {
 		chart1->Series["Series1"]->Points->Clear();
 	
 		Diagramma Hed(chart1, Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
+		Hed.dray(chart1);
 	}
 	private: System::Void chart1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 	}
