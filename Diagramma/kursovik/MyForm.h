@@ -487,8 +487,8 @@ namespace kursovik {
 		if (textBox7->Text != "")Number[6] = Double::Parse(textBox7->Text);
 		chart1->Series["Series1"]->Points->Clear();
 		chart2->Series["Series1"]->Points->Clear();
-		Diagramma Hed(chart1, Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
-		Diagramma Hed1(chart1, Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
+		Diagramma Hed( Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
+		Diagramma1 Hed1( Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
 		Diag *px = &Hed;
 		px->dray(chart1);
 		Diag *py = &Hed1;
