@@ -71,6 +71,7 @@ namespace kursovik {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^  chart2;
 
 	private:
 
@@ -94,6 +95,9 @@ namespace kursovik {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->Вывод = (gcnew System::Windows::Forms::Button());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
@@ -117,14 +121,16 @@ namespace kursovik {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->chart2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Вывод
 			// 
 			this->Вывод->Font = (gcnew System::Drawing::Font(L"Times New Roman", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->Вывод->Location = System::Drawing::Point(639, 435);
+			this->Вывод->Location = System::Drawing::Point(575, 425);
 			this->Вывод->Name = L"Вывод";
 			this->Вывод->Size = System::Drawing::Size(185, 41);
 			this->Вывод->TabIndex = 1;
@@ -376,11 +382,32 @@ namespace kursovik {
 			this->button7->UseVisualStyleBackColor = true;
 			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
 			// 
+			// chart2
+			// 
+			this->chart2->BackColor = System::Drawing::Color::Transparent;
+			chartArea2->Name = L"ChartArea1";
+			this->chart2->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart2->Legends->Add(legend2);
+			this->chart2->Location = System::Drawing::Point(911, 12);
+			this->chart2->Name = L"chart2";
+			this->chart2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Fire;
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::StackedColumn;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series1";
+			this->chart2->Series->Add(series2);
+			this->chart2->Size = System::Drawing::Size(456, 464);
+			this->chart2->TabIndex = 24;
+			this->chart2->Text = L"Диаграмма 2";
+			this->chart2->Click += gcnew System::EventHandler(this, &MyForm::chart2_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(953, 488);
+			this->ClientSize = System::Drawing::Size(1388, 488);
+			this->Controls->Add(this->chart2);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
@@ -410,10 +437,10 @@ namespace kursovik {
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-		
-		
+
 		}
 		
 #pragma endregion
@@ -459,9 +486,13 @@ namespace kursovik {
 		if (textBox6->Text != "")Number[5] = Double::Parse(textBox6->Text);
 		if (textBox7->Text != "")Number[6] = Double::Parse(textBox7->Text);
 		chart1->Series["Series1"]->Points->Clear();
-	
+		chart2->Series["Series1"]->Points->Clear();
 		Diagramma Hed(chart1, Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
-		Hed.dray(chart1);
+		Diagramma Hed1(chart1, Number[0], Number[1], Number[2], Number[3], Number[4], Number[5], Number[6]);
+		Diag *px = &Hed;
+		px->dray(chart1);
+		Diag *py = &Hed1;
+		py->dray(chart2);
 	}
 	private: System::Void chart1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 	}
@@ -521,5 +552,7 @@ private: System::Void button7_Click(System::Object^  sender, System::EventArgs^ 
 	 private: System::Void Operation7(System::Object^ sender, System::EventArgs^  e) {
 				 textBox7->Text = "";
 			 }
+private: System::Void chart2_Click(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
