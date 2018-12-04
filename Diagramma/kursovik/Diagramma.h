@@ -12,15 +12,7 @@ protected: int Y[10];
 		   char Text[10];
 		   int i;
 
-public: virtual void dray(System::Windows::Forms::DataVisualization::Charting::Chart^  chart1) {
-	if (Y[0] != 0) chart1->Series["Series1"]->Points->AddXY("¹1", Y[0]);
-	if (Y[1] != 0) chart1->Series["Series1"]->Points->AddXY("¹2", Y[1]);
-	if (Y[2] != 0) chart1->Series["Series1"]->Points->AddXY("¹3", Y[2]);
-	if (Y[3] != 0) chart1->Series["Series1"]->Points->AddXY("¹4", Y[3]);
-	if (Y[4] != 0) chart1->Series["Series1"]->Points->AddXY("¹5", Y[4]);
-	if (Y[5] != 0) chart1->Series["Series1"]->Points->AddXY("¹6", Y[5]);
-	if (Y[6] != 0) chart1->Series["Series1"]->Points->AddXY("¹7", Y[6]);
-}
+public: virtual void dray(System::Windows::Forms::DataVisualization::Charting::Chart^  chart1) = 0;
 };
 class Diagramma:public Diag {
 
