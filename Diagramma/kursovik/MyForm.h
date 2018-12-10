@@ -495,6 +495,7 @@ namespace kursovik {
 		py->dray(chart2);
 	}
 	private: System::Void chart1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		
 	}
 
 
